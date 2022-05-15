@@ -19,12 +19,14 @@
   },
   "homepage": "https://github.com/prgrms-fe-devcourse/FEDC2-8_Vue#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "vue": "^3.2.33",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^8.7.1",
