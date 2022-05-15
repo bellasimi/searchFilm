@@ -1,0 +1,40 @@
+{
+  "name": "fedc2-8_vue",
+  "version": "1.0.0",
+  "description": "API 사용에 대해 궁금한 점은 '질의응답' 채널에 질문 남겨주세요!",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prgrms-fe-devcourse/FEDC2-8_Vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prgrms-fe-devcourse/FEDC2-8_Vue/issues"
+  },
+  "homepage": "https://github.com/prgrms-fe-devcourse/FEDC2-8_Vue#readme",
+  "dependencies": {
+    "vue": "^3.2.33",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^10.2.4",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "vue-loader": "^17.0.0",
+    "vue-style-loader": "^4.1.3",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
