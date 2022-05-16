@@ -12,12 +12,12 @@ export default {
     searchList: {
       type: Array,
       default: () => {
-        return [];
+        return []
       },
     },
   },
   created() {
-    console.log(this.searchList);
+    console.log(this.searchList)
   },
-};
+}
 </script>
