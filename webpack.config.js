@@ -14,6 +14,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true,
   },
   module: {
@@ -38,4 +39,7 @@ module.exports = {
     }),
     new Dotenv(),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 }
