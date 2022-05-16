@@ -1,16 +1,20 @@
 <template>
   <div>
-    <h1>영화 검색 사이트</h1>
-    <SearchBar />
+    <header>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/search">검색결과</RouterLink>
+      <RouterLink to="{ name: 'Detail', params: { imdbID: 1111}, query: { imdbID: 12} }"
+        >상세페이지</RouterLink
+      >
+    </header>
+    <section class="page">
+      <RouterView />
+    </section>
   </div>
 </template>
 
 <script>
-import SearchBar from '~/components/SearchBar'
 export default {
-  components: {
-    SearchBar,
-  },
   data() {
     return {
       keyword: '검색어를 입력해주세요',
@@ -18,3 +22,25 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+header {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0 0 0;
+}
+</style>
