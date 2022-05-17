@@ -11,8 +11,5 @@ export default {
   components: {
     SearchBar,
   },
-  created() {
-    console.log(this.$route)
-  },
 }
 </script>
