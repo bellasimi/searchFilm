@@ -1,0 +1,42 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:vue/vue3-recommended", "prettier"],
+  "rules": {
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "vue/html-closing-bracket-newline": [
+      "error",
+      {
+        "singleline": "never",
+        "multiline": "alwyas"
+      }
+    ],
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "always" /* img같이 그냥 태그 하나로 쓰는 애 <img> => <img /> */,
+          "normal": "never",
+          "component": "always"
+        },
+        "svg": "always",
+        "math": "always"
+      }
+    ],
+    "vue/max-attributes-per-line": [
+      "error",
+      {
+        "singleline": {
+          "max": 3
+        },
+        "multiline": {
+          "max": 3
+        }
+      }
+    ],
+    "vue/multi-word-component-names": "off"
+  }
+}
