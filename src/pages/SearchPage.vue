@@ -5,8 +5,6 @@
 
 <script>
 import SearchList from '~/components/SearchList'
-import { API_KEY } from '~/constants'
-
 export default {
   components: {
     SearchList,
@@ -24,9 +22,14 @@ export default {
   },
   methods: {
     async fetchSearch() {
-      const result = await this.$fetch(`?apikey=${API_KEY}&s=${this.$route.params.keyword}&page=3`)
+      const result = await fetch('/.netlify/functions/workspace', {
+        method: 'POST',
+        body: JSON.stringify({
+          params: `&s=${this.$route.params.keyword}&page=3`,
+        }),
+      }).then((result) => result.json())
+
       this.searchList = result.Search
-      console.log(result.Search)
     },
   },
 }

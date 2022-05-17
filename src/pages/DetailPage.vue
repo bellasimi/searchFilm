@@ -5,7 +5,6 @@
 
 <script>
 import Detail from '~/components/Detail'
-import { API_KEY } from '~/constants'
 
 export default {
   components: {
@@ -24,9 +23,12 @@ export default {
   },
   methods: {
     async fetchDetail() {
-      const result = await this.$fetch(
-        `?apikey=${API_KEY}&i=${this.$route.params.imdbID}&plot=full`
-      )
+      const result = await fetch('/.netlify/functions/workspace', {
+        method: 'POST',
+        body: JSON.stringify({
+          params: `&i=${this.$route.params.imdbID}&plot=full`,
+        }),
+      }).then((result) => result.json())
       this.film = result
     },
   },
