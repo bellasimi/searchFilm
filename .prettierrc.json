@@ -1,0 +1,17 @@
+{
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "singleAttributePerLine": false,
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 200
+      }
+    }
+  ]
+}
