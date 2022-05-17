@@ -40,6 +40,7 @@ module.exports = {
     new Dotenv(),
   ],
   devServer: {
+    port: 8079,
     historyApiFallback: true,
   },
 }
