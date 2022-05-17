@@ -14,23 +14,19 @@ export default {
   data() {
     return {
       searchList: {
-        type: Array,
+        type: Object,
         default: () => [],
       },
     }
   },
-  created() {
-    const keyword = this.$route.params.keyword
-    console.log(keyword)
-    this.fetchSearch()
-  },
   mounted() {
-    console.log(this)
+    this.fetchSearch()
   },
   methods: {
     async fetchSearch() {
       const result = await this.$fetch(`?apikey=${API_KEY}&s=${this.$route.params.keyword}&page=3`)
       this.searchList = result.Search
+      console.log(result.Search)
     },
   },
 }

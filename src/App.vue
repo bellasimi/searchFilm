@@ -2,10 +2,6 @@
   <div>
     <header>
       <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/search">검색결과</RouterLink>
-      <RouterLink to="{ name: 'Detail', params: { imdbID: 1111}, query: { imdbID: 12} }"
-        >상세페이지</RouterLink
-      >
     </header>
     <section class="page">
       <RouterView />
