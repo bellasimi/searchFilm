@@ -43,10 +43,10 @@ export default {
     },
   },
   created() {
-    this.fetchSearch('render')
+    this.fetchSearch()
   },
   methods: {
-    async fetchSearch(type) {
+    async fetchSearch(type = 'render') {
       this.isLoading = true
       const params = `?s=${this.$route.params.keyword}&page=${this.page}`
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
