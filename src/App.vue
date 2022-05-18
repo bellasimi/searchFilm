@@ -26,6 +26,7 @@ export default {
 
   > section {
     margin: 10px auto 0 auto;
+    width: 100%;
   }
 }
 </style>

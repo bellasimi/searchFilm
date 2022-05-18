@@ -33,6 +33,8 @@ export default {
 .search-bar {
   display: flex;
   justify-content: center;
+  width: 30%;
+  margin: 0 auto;
 
   &__form {
     position: relative;

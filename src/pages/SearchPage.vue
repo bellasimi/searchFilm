@@ -32,32 +32,38 @@ export default {
       isLoading: false,
       isFetched: true,
       totalResults: 1,
+      keyword: this.$route.params.keyword,
     }
   },
+  watch: {
+    $route(to, from) {
+      if (to.path !== from.path) {
+        this.fetchSearch('route')
+      }
+    },
+  },
   created() {
-    this.fetchSearch()
-  },
-  mounted() {
-    document.addEventListener('scroll', this.handleScroll)
-  },
-  unmounted() {
-    document.removeEventListener('scroll', this.handleScroll)
+    this.fetchSearch('render')
   },
   methods: {
-    async fetchSearch() {
+    async fetchSearch(type) {
       this.isLoading = true
       const params = `?s=${this.$route.params.keyword}&page=${this.page}`
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
         result.json()
       )
-      console.log(result)
       if (result.Response === 'False') {
         this.isFetched = false
         alert('해당 검색 결과가 없습니다!')
         this.$router.push('/')
       }
 
-      this.searchList = [...this.searchList, ...result.Search]
+      if (type === 'render') {
+        this.searchList = [...this.searchList, ...result.Search]
+      } else {
+        this.searchList = result.Search
+      }
+
       this.totalResults = result.totalResults
       this.isLoading = false
     },
