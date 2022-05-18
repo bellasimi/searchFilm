@@ -38,12 +38,10 @@ export default {
   methods: {
     async fetchSearch() {
       this.isLoading = true
-      const result = await fetch('/.netlify/functions/workspace', {
-        method: 'POST',
-        body: JSON.stringify({
-          params: `&s=${this.$route.params.keyword}&page=${this.page}`,
-        }),
-      }).then((result) => result.json())
+      const params = `?s=${this.$route.params.keyword}&page=${this.page}`
+      const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
+        result.json()
+      )
 
       if (!result.Response) {
         this.isFetched = false

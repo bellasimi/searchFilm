@@ -31,12 +31,8 @@ export default {
   methods: {
     async fetchDetail() {
       this.isLoading = true
-      const result = await fetch('/.netlify/functions/workspace', {
-        method: 'POST',
-        body: JSON.stringify({
-          params: `&i=${this.$route.params.imdbID}&plot=full`,
-        }),
-      }).then((result) => result.json())
+      const params = `?i=${this.$route.params.imdbID}&plot=full`
+      const result = await fetch('/.netlify/functions/searchDetail').then((result) => result.json())
       this.film = result
       this.isLoading = false
     },
