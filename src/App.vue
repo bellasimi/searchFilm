@@ -1,18 +1,13 @@
 <template>
-  <div>
-    <Nav />
-    <section class="page">
+  <div class="page">
+    <section>
       <RouterView />
     </section>
   </div>
 </template>
 
 <script>
-import Nav from '~/components/Nav'
 export default {
-  components: {
-    Nav,
-  },
   data() {
     return {
       keyword: '검색어를 입력해주세요',
@@ -27,7 +22,10 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 100px 0 0 0;
+
+  > section {
+    margin: 10px auto 0 auto;
+  }
 }
 </style>

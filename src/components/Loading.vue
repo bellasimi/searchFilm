@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   background-color: white;
-
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;

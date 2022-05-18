@@ -8,6 +8,7 @@
     >
       <img class="poster" :src="searchItem.Poster" alt="poster" />
       <div class="title">{{ searchItem.Title }}</div>
+      <div class="year">{{ searchItem.Year }}</div>
     </li>
   </ul>
 </template>
@@ -60,8 +61,11 @@ $sm: 400px;
   }
 
   &__items {
-    width: 100%;
-    height: 80%;
+    width: 80%;
+    @include media(sm) {
+      width: 100%;
+    }
+    height: 90%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -70,17 +74,20 @@ $sm: 400px;
 
     .poster {
       width: 100%;
-      height: 50%;
+      height: 70%;
       object-fit: cover;
     }
     .title {
-      font-size: 17px;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 15px 5px 0 5px;
+    }
+    .year {
+      font-size: 14px;
       font-weight: 600;
     }
     &:hover {
       transform: scale(1.1);
-      position: relative;
-      z-index: 2;
       box-shadow: 2px 2px 2px 2px rgba(12, 12, 12, 0.301);
     }
   }

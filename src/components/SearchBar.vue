@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <input v-model="keyword" :placeholder="keyword" />
-    <button @click="validateKeyword">검색</button>
+    <div @click="validateKeyword" class="search-bar__button">검색</div>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {
-      keyword: '검색어를 입력해 주세요',
+      keyword: '',
     }
   },
   methods: {
@@ -26,3 +26,19 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.search-bar {
+  display: flex;
+  justify-content: center;
+  > input {
+    border-radius: 10px;
+    padding: 2px 10px;
+  }
+  &__button {
+    color: white;
+    cursor: pointer;
+    margin: 4px 0 0 5px;
+  }
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="search-page" @scroll="handleScroll">
-    <h1>검색 결과 리스트</h1>
+    <Nav />
     <SearchList
       v-if="isFetched"
       :search-list="searchList"
@@ -9,7 +9,7 @@
     />
     <NotFound v-else />
     <Loading v-show="isLoading" />
-    <button @click="loadMore">더보기</button>
+    <button @click="loadMore" class="more" v-show="isFetched">더보기</button>
   </div>
 </template>
 
@@ -17,11 +17,13 @@
 import SearchList from '~/components/SearchList'
 import Loading from '~/components/Loading'
 import NotFound from '../components/NotFound.vue'
+import Nav from '~/components/Nav'
 export default {
   components: {
     SearchList,
     Loading,
     NotFound,
+    Nav,
   },
   data() {
     return {
@@ -67,3 +69,27 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.search-page {
+  width: 100vw;
+}
+.more {
+  width: 100px;
+  height: 50px;
+  margin: 10px auto 10px auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #c62828;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &:hover {
+    background-color: #ff5f52;
+  }
+}
+</style>
