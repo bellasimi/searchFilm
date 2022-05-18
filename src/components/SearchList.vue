@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 @use 'sass:map';
+
 $lg: 1000px;
 $md: 800px;
 $sm: 400px;
@@ -44,27 +45,28 @@ $sm: 400px;
 .search {
   cursor: pointer;
   list-style: none;
+  position: relative;
   display: grid;
   grid-auto-rows: 300px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 
-  @include media($lg) {
-    grid-template-columns: repeat(5, 1fr);
+  @include media(md) {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  @include media($md) {
-    grid-template-rows: repeat(3, 1fr);
-  }
-
-  @include media($sm) {
-    grid-template-rows: 1fr;
+  @include media(sm) {
+    grid-template-columns: 1fr;
   }
 
   &__items {
-    width: 90%;
+    width: 100%;
+    height: 80%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
 
     .poster {
       width: 100%;
@@ -72,6 +74,14 @@ $sm: 400px;
       object-fit: cover;
     }
     .title {
+      font-size: 17px;
+      font-weight: 600;
+    }
+    &:hover {
+      transform: scale(1.1);
+      position: relative;
+      z-index: 2;
+      box-shadow: 2px 2px 2px 2px rgba(12, 12, 12, 0.301);
     }
   }
 }
