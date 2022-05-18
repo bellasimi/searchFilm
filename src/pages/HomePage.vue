@@ -40,6 +40,7 @@ export default {
   }
   &-title {
     color: white;
+    margin-left: 17px;
   }
 }
 </style>

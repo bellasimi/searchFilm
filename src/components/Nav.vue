@@ -57,5 +57,6 @@ nav {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  width: 30%;
 }
 </style>

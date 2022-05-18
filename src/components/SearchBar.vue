@@ -1,7 +1,9 @@
 <template>
   <div class="search-bar">
-    <input v-model="keyword" :placeholder="keyword" />
-    <div @click="validateKeyword" class="search-bar__button">검색</div>
+    <form @submit.prevent="validateKeyword" class="search-bar__form">
+      <input v-model="keyword" :placeholder="keyword" />
+      <i class="fa-solid fa-magnifying-glass" @click="validateKeyword"></i>
+    </form>
   </div>
 </template>
 
@@ -31,9 +33,23 @@ export default {
 .search-bar {
   display: flex;
   justify-content: center;
-  > input {
+
+  &__form {
+    position: relative;
+    width: 100%;
+
+    > i {
+      position: absolute;
+      top: 9px;
+      right: 1px;
+      cursor: pointer;
+    }
+  }
+  input {
     border-radius: 10px;
     padding: 2px 10px;
+    width: 100%;
+    height: 25px;
   }
   &__button {
     color: white;

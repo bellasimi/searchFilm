@@ -1,5 +1,5 @@
 <template>
-  <div class="search-page" @scroll="handleScroll">
+  <div class="search-page">
     <Nav />
     <SearchList
       v-if="isFetched"
@@ -37,6 +37,12 @@ export default {
   created() {
     this.fetchSearch()
   },
+  mounted() {
+    document.addEventListener('scroll', this.handleScroll)
+  },
+  unmounted() {
+    document.removeEventListener('scroll', this.handleScroll)
+  },
   methods: {
     async fetchSearch() {
       this.isLoading = true
@@ -44,9 +50,11 @@ export default {
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
         result.json()
       )
-
-      if (!result.Response) {
+      console.log(result)
+      if (result.Response === 'False') {
         this.isFetched = false
+        alert('해당 검색 결과가 없습니다!')
+        this.$router.push('/')
       }
 
       this.searchList = [...this.searchList, ...result.Search]
@@ -58,9 +66,8 @@ export default {
       this.fetchSearch()
     },
     handleScroll() {
-      const isScrollEnd = widow.innerHeight + window.scrollY + 100 >= document.body.offsetHeight
-      const isEnd =
-        isScrollEnd && !this.isLoading && this.searchList.length < this.totalResults.length
+      const isScrollEnd = window.innerHeight + window.scrollY + 100 >= document.body.offsetHeight
+      const isEnd = isScrollEnd && !this.isLoading && this.searchList.length < this.totalResults
       if (isEnd) {
         this.page += 1
         this.$debounce(this.fetchSearch, 300)

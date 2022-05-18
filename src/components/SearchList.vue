@@ -30,7 +30,7 @@ export default {
 
 $lg: 1000px;
 $md: 800px;
-$sm: 400px;
+$sm: 500px;
 
 @mixin media($display) {
   $breakpoints: (
