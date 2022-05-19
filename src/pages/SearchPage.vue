@@ -52,6 +52,7 @@ export default {
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
         result.json()
       )
+
       if (result.Response === 'False') {
         this.isFetched = false
         alert('해당 검색 결과가 없습니다!')
