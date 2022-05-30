@@ -78,11 +78,17 @@ $sm: 500px;
       object-fit: cover;
     }
     .title {
+      width: 90%;
+      text-align: center;
       font-size: 16px;
       font-weight: 600;
-      margin: 15px 5px 0 5px;
+      margin: 15px 5px 0px 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .year {
+      margin-top: 5px;
       font-size: 14px;
       font-weight: 600;
     }
