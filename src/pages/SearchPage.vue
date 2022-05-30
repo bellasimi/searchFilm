@@ -8,8 +8,8 @@
       :total-results="totalResults"
     />
     <NotFound v-else />
-    <Loading v-show="isLoading" />
-    <button @click="loadMore" class="more" v-show="isFetched">더보기</button>
+    <Loading v-if="isLoading" />
+    <button @click="loadMore" class="more" v-else>더보기</button>
   </div>
 </template>
 
