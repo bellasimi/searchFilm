@@ -1,5 +1,6 @@
 <template>
   <div class="detail">
+    <i class="fa-solid fa-arrow-left-long fa-lg" @click="back"> 이전</i>
     <div class="upper-wrapper">
       <div class="poster"><img :src="film.Poster" alt="poster" /></div>
       <div class="contents">
@@ -28,6 +29,12 @@ export default {
       default: () => ({}),
     },
   },
+  methods: {
+    back() {
+      console.log('??')
+      this.$router.go(-1)
+    },
+  },
 }
 </script>
 
@@ -35,8 +42,18 @@ export default {
 .detail {
   width: 60%;
   margin: 20px auto 0 auto;
+  position: relative;
   display: flex;
   flex-direction: column;
+  > i {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: -100px;
+    &:hover {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
   .upper-wrapper {
     display: flex;
     justify-content: center;
