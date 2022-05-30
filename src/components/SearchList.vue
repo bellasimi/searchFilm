@@ -6,7 +6,11 @@
       class="search__items"
       @click="$router.push(`/detail/${searchItem.imdbID}`)"
     >
-      <img class="poster" :src="searchItem.Poster" alt="poster" />
+      <img
+        class="poster"
+        :src="searchItem.Poster === 'N/A' ? defaultImage : searchItem.Poster"
+        alt="poster"
+      />
       <div class="title">{{ searchItem.Title }}</div>
       <div class="year">{{ searchItem.Year }}</div>
     </li>
@@ -15,6 +19,10 @@
 
 <script>
 export default {
+  data() {
+    return { defaultImage: 'http://via.placeholder.com/200' }
+  },
+
   props: {
     searchList: {
       type: Object,

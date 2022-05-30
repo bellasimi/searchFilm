@@ -2,7 +2,9 @@
   <div class="detail">
     <i class="fa-solid fa-arrow-left-long fa-lg" @click="back"> 이전</i>
     <div class="upper-wrapper">
-      <div class="poster"><img :src="film.Poster" alt="poster" /></div>
+      <div class="poster">
+        <img :src="film.Poster === 'N/A' ? defaultImage : film.Poster" alt="poster" />
+      </div>
       <div class="contents">
         <h1 class="title">{{ film.Title }}</h1>
         <h3>개봉일: {{ film.Released }}</h3>
@@ -23,6 +25,10 @@
 
 <script>
 export default {
+  data() {
+    return { defaultImage: 'http://via.placeholder.com/200' }
+  },
+
   props: {
     film: {
       type: Object,
