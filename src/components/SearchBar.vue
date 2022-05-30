@@ -17,10 +17,14 @@ export default {
   methods: {
     validateKeyword() {
       const regex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
+      const KEYWORD_MIN_LENGTH = 3
+      const KEYWORD_MAX_LENGTH = 15
       const isInvalid =
-        regex.test(this.keyword) || this.keyword.length < 2 || this.keyword.length > 15
+        regex.test(this.keyword) ||
+        this.keyword.length < KEYWORD_MIN_LENGTH ||
+        this.keyword.length > KEYWORD_MAX_LENGTH
       if (isInvalid) {
-        alert('검색어는 한글을 제외하고 2~15자로 입력해주세요')
+        alert('검색어는 한글을 제외하고 3~15자로 입력해주세요')
       } else {
         this.$router.push(`/search/${this.keyword}`)
       }
