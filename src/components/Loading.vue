@@ -1,20 +1,16 @@
 <template>
   <div class="loading">
-    <img src="/images/loading.gif" alt="loading" />
+    <img src="/images/loading.svg" alt="loading" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .loading {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  z-index: 2;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px auto 0 auto;
 }
 </style>
