@@ -38,7 +38,8 @@ export default {
   watch: {
     $route(to, from) {
       if (to.path.includes('search')) {
-        this.fetchSearch('route')
+        this.searchList = []
+        this.fetchSearch()
       }
     },
   },
@@ -46,8 +47,7 @@ export default {
     this.fetchSearch()
   },
   methods: {
-    async fetchSearch(type = 'render') {
-      console.log('api요청')
+    async fetchSearch() {
       this.isLoading = true
       const params = `?s=${this.$route.params.keyword}&page=${this.page}`
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
@@ -60,11 +60,7 @@ export default {
         this.$router.push('/')
       }
 
-      if (type === 'render') {
-        this.searchList = [...this.searchList, ...result.Search]
-      } else {
-        this.searchList = result.Search
-      }
+      this.searchList = [...this.searchList, ...result.Search]
 
       this.totalResults = result.totalResults
       this.isLoading = false
