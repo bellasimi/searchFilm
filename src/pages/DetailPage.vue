@@ -1,7 +1,7 @@
 <template>
   <div class="detail-page">
     <Nav />
-    <Detail :film="film" />
+    <Detail :film="film" v-show="isFetched" />
     <Loading v-show="isLoading" />
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
         type: Boolean,
         default: false,
       },
+      isFetched: false,
     }
   },
   created() {
@@ -40,6 +41,7 @@ export default {
         result.json()
       )
       this.film = result
+      this.isFetched = true
       this.isLoading = false
     },
   },
