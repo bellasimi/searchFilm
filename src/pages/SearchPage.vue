@@ -37,7 +37,7 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.path !== from.path) {
+      if (to.path.includes('search')) {
         this.fetchSearch('route')
       }
     },
@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     async fetchSearch(type = 'render') {
+      console.log('api요청')
       this.isLoading = true
       const params = `?s=${this.$route.params.keyword}&page=${this.page}`
       const result = await fetch(`/.netlify/functions/search${params}`).then((result) =>
