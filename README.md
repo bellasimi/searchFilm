@@ -4,9 +4,19 @@
 
 영어로 제목을 입력하면 관련 영화들의 정보를 볼 수 있는 사이트입니다. 
 
+<br/>
+
+https://user-images.githubusercontent.com/79133602/179399734-c46d96c2-2c5c-4569-9812-c6363363f14f.mp4
+
+
+<br/>
+
 # 🤔 사이트 제작 배경
 
 Vue를 공부하고 학습한 내용을 확인하기 위해 만들었습니다. 
+
+
+<br/>
 
 # 👩‍💻 주요 구현 사항 
 
@@ -148,6 +158,9 @@ API 요청을 하는 동안 isLoading을 true로 만들어 loading.gif가 화면
 <Loading v-show="isLoading" />
 
 ```
+
+
+<br/>
 
 # 👩‍💻 refactor & fix
 
