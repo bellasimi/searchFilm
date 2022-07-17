@@ -23,7 +23,7 @@ Vue를 공부하고 학습한 내용을 확인하기 위해 만들었습니다.
 
 ### 1. 검색어 입력시 유효성검사
 
-검색어 입력시 아래처럼 regex, 조건물을 통해 유효성 검사를 한다.
+검색어 입력시 아래처럼 regex, 조건물을 통해 유효성 검사를 합니다.
 
 ```js
 validateKeyword() {
@@ -38,7 +38,7 @@ validateKeyword() {
 
 ```
 
-유효성 검사를 통과하면 해당 keyword로 api를 호출해서 영화목록을 가져온다.
+유효성 검사를 통과하면 해당 keyword로 api를 호출해서 영화목록을 가져옵니다.
 
 ```js
 async fetchSearch() {
@@ -58,7 +58,7 @@ async fetchSearch() {
 
 ```
 
-이때 api에 접근하는 건 `/.netlify/functions/search` 경로에 만든 가상 함수다.
+이때 api에 접근하는 건 `/.netlify/functions/search` 경로에 만든 가상 함수입니다.
 
 ```js
 const axios = require('axios')
@@ -82,7 +82,7 @@ exports.handler = async function (event) {
 
 ```
 
-만약 다음 페이지를 가져오고 싶다면 더보기 버튼을 누르고, 해당 버튼 클릭시 loadMore() 함수를 호출해서 새로 리스트를 추가한다.
+만약 다음 페이지를 가져오고 싶다면 더보기 버튼을 누르고, 해당 버튼 클릭시 loadMore() 함수를 호출해서 새로 리스트를 추가합니다.
 
 ```js
 loadMore() {
@@ -109,7 +109,7 @@ async fetchDetail() {
 
 ```
 
-해당 함수는 서버리스로 쿼리문을 보내 해당 쿼리문 내용으로 다시 get 요청을 받아 fetchDetail로 반환한다.
+해당 함수는 서버리스로 쿼리문을 보내 해당 쿼리문 내용으로 다시 get 요청을 받아 fetchDetail로 반환합니다.
 
 ```js
 const axios = require('axios')
@@ -135,7 +135,7 @@ try {
 
 ### 3. 환경변수 은닉
 
-API Key(`7035c60c`)를 환경변수로 만들어서 은닉했다.
+API Key(`7035c60c`)를 환경변수로 만들어서 은닉했습니다.
 
 개발시엔 dotenv-webpack 라이브러리 설치 후 .env 파일에 해당 내용을 입력 후
 
@@ -146,13 +146,13 @@ NETLIFY_API = "/.netlify/functions/workspace"
 
 ```
 
-사용할 파일에서 `const { API_END_POINT, API_KEY } = process.env` 이런 식으로 가져왔다.
+사용할 파일에서 `const { API_END_POINT, API_KEY } = process.env` 이런 식으로 가져왔습니다.
 
-배포시엔 .env파일을 올리지 않고, netlify에서 제공하는 환경변수에 해당 값을 입력했다.
+배포시엔 .env파일을 올리지 않고, netlify에서 제공하는 환경변수에 해당 값을 입력했습니다.
 
 ### 4. 로딩 처리
 
-API 요청을 하는 동안 isLoading을 true로 만들어 loading.gif가 화면에 나오도록 했다.
+API 요청을 하는 동안 isLoading을 true로 만들어 loading.gif가 화면에 나오도록 했습니다.
 
 ```js
 <Loading v-show="isLoading" />
@@ -167,7 +167,7 @@ API 요청을 하는 동안 isLoading을 true로 만들어 loading.gif가 화면
 
 ### 1.  최적화
 
-fetch를 여러번 하기 때문에 v-if보다 v-show가 더 효율적이라고 생각해서 해당 디렉터리를 사용했다.
+fetch를 여러번 하기 때문에 v-if보다 v-show가 더 효율적이라고 생각해서 해당 디렉터리를 사용했습니다.
 
 ```js
 async fetchDetail() {
@@ -184,13 +184,13 @@ async fetchDetail() {
 
 ### 2. 의문점과 해결
 
-검색을 하면 라우팅을 통해서 검색어를 전달하고 created() 사이클에서 fetch를 하도록 했다.
+검색을 하면 라우팅을 통해서 검색어를 전달하고 created() 사이클에서 fetch를 하도록 했습니다.
 
 ```js
 this.$router.push(`/search/${this.keyword}`)
 ```
 
-그런데 이렇게 하면 SearchPage처럼(아래) 해당 페이지에서 라우팅을 하기에 created() 라이프 사이클을 사용하지 않는 예외가 생긴다.
+그런데 이렇게 하면 SearchPage처럼(아래) 해당 페이지에서 라우팅을 하기에 created() 라이프 사이클을 사용하지 않는 예외가 생깁니다.
 
 ![https://user-images.githubusercontent.com/79133602/169147694-575cf45d-afa7-4666-a786-2d87f8f31d7c.png](https://user-images.githubusercontent.com/79133602/169147694-575cf45d-afa7-4666-a786-2d87f8f31d7c.png)
 
@@ -208,7 +208,7 @@ this.$router.push(`/search/${this.keyword}`)
   },
 ```
 
-다르면 type을 달리해서 fetch를 하도록 만들면 된다. 
+다르면 type을 달리해서 fetch를 하도록 만들었습니다.
 
 ```js
 if (type === 'render') {
@@ -221,7 +221,7 @@ if (type === 'render') {
 
 ### 3. 또 다른 문제
 
- 상세 페이지로 이동할 때도 watch가 실행되기 때문에 불필요한 API 요청이 생기고 있었다!  그래서 다음과 같이 search path로 이동할 때만 fetchSearch를 호출하도록했다.
+ 상세 페이지로 이동할 때도 watch가 실행되기 때문에 불필요한 API 요청이 생기고 있었습니다!  그래서 다음과 같이 search path로 이동할 때만 fetchSearch를 호출하도록했습니다.
 
 ```js
 watch: {
@@ -235,7 +235,7 @@ watch: {
 
 ### 4.  type을 달리해서 fetch하는 조건문 변경
 
-fetchSearch(type = 'render') 매개변수로 searchList를 변경하고 있는데, 해당  방법이 어색하고 비효율적이라고 생각해서 type 대신 기존 this.searchList를 받아서 searchList로 변경하고 얕은 복사를 써서 기존 데이터에 추가 하도록 했다. 
+fetchSearch(type = 'render') 매개변수로 searchList를 변경하고 있는데, 해당  방법이 어색하고 비효율적이라고 생각해서 type 대신 기존 this.searchList를 받아서 searchList로 변경하고 얕은 복사를 써서 기존 데이터에 추가 하도록 했습니다.
 
 ```js
 async fetchSearch() {
